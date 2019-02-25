@@ -1,48 +1,48 @@
-1¡¢jar°ü
-	1£©mybatis-3.1.1.jar
-	2£©mysql-connector-java-5.1.7-bin.jar
+1ã€jaråŒ…
+	1ï¼‰mybatis-3.1.1.jar
+	2ï¼‰mysql-connector-java-5.1.7-bin.jar
 
-2¡¢ÅäÖÃÎÄ¼ş
-	1£©mybatis-conf.xml£ºÖ÷ÒªÄÚÈİÊÇÅäÖÃÊı¾İ¿âÁ¬½ÓĞÅÏ¢
-	2£©userMapper.xml£ºÊı¾İ¿â±íµÄsqlÓ³ÉäÎÄ¼ş£¬Ö÷ÒªÄÚÈİÊÇsqlÓï¾ä  ¡¾¿ÉÒÔÄæÏòÉú³É£¬²»ÓÃ×Ô¼º±àĞ´¡¿
-	**mybatis-conf.xmlÖĞĞèÒª×¢²áuserMapper.xml
-	3£©generator.xml£ºÓÃÓÚmavenÄæÏòÉú³É
+2ã€é…ç½®æ–‡ä»¶
+	1ï¼‰mybatis-conf.xmlï¼šä¸»è¦å†…å®¹æ˜¯é…ç½®æ•°æ®åº“è¿æ¥ä¿¡æ¯ï¼Œä»¥åŠæ³¨å†Œmapperæ˜ å°„æ–‡ä»¶ã€‚   ã€åœ¨ä¸springæ•´åˆä¸­ï¼Œæœ‰äº† Spring æ‰˜ç®¡æ•°æ®æºï¼Œåœ¨ MyBatis é…ç½®æ–‡ä»¶ä¸­ä»…ä»…éœ€è¦å…³æ³¨æ€§èƒ½åŒ–é…ç½®ã€‚ã€‘
+	2ï¼‰userMapper.xmlï¼šæ•°æ®åº“è¡¨çš„mapperæ˜ å°„æ–‡ä»¶ï¼Œä¸»è¦å†…å®¹æ˜¯sqlè¯­å¥  ã€å¯ä»¥é€†å‘ç”Ÿæˆï¼Œä¸ç”¨è‡ªå·±ç¼–å†™ã€‘
+	**mybatis-conf.xmlä¸­éœ€è¦æ³¨å†ŒuserMapper.xml
+	3ï¼‰generator.xmlï¼šç”¨äºmavené€†å‘ç”Ÿæˆ
 
-3¡¢Ä¿Â¼½á¹¹
-	|-mybatis-conf.xml <ÅäÖÃÎÄ¼ş>  ¡¾ÅäÖÃÊı¾İ¿âÁ¬½Ó¡¢×¢²ásqlÓ³ÉäÎÄ¼ş¡¿
+3ã€ç›®å½•ç»“æ„
+	|-mybatis-conf.xml <é…ç½®æ–‡ä»¶>  ã€é…ç½®æ•°æ®åº“è¿æ¥ã€æ³¨å†Œsqlæ˜ å°„æ–‡ä»¶ã€‘
 	|-model
-	    |-User.java <ÊµÌåÀà>
+	    |-User.java <å®ä½“ç±»>
 	    |-dao
-	        |-UserMapper.java <dao½Ó¿Ú>      ¡¾¶¨ÒåÔöÉ¾¸Ä²éµÄ½Ó¿Ú·½·¨¡¿      
-	        |-userMapper.xml  <sqlÓ³ÉäÎÄ¼ş>  ¡¾¶¨ÒåÔöÉ¾¸Ä²éµÄsql·½·¨¡¿     sqlÓï¾äµÄidÒªÓëdao½Ó¿ÚµÄ·½·¨Ãû¶ÔÓ¦
+	        |-UserMapper.java <daoæ¥å£>      ã€å®šä¹‰å¢åˆ æ”¹æŸ¥çš„æ¥å£æ–¹æ³•ã€‘      
+	        |-userMapper.xml  <sqlæ˜ å°„æ–‡ä»¶>  ã€å®šä¹‰å¢åˆ æ”¹æŸ¥çš„sqlæ–¹æ³•ã€‘     sqlè¯­å¥çš„idè¦ä¸daoæ¥å£çš„æ–¹æ³•åå¯¹åº”
 
-4¡¢×÷ÓÃÓò£¨scope£©ºÍÉúÃüÖÜÆÚ
-		ÀàÃû³Æ			SCOPE
+4ã€ä½œç”¨åŸŸï¼ˆscopeï¼‰å’Œç”Ÿå‘½å‘¨æœŸ
+		ç±»åç§°			SCOPE
 	SqlSessionFactoryBuilder     	                method
 	     SqlSessionFactory                              application
-	            SqlSession                      request/method £¨¿ÉÒÔÈÏÎªÊÇÏß³Ì¼¶£©
+	            SqlSession                      request/method ï¼ˆå¯ä»¥è®¤ä¸ºæ˜¯çº¿ç¨‹çº§ï¼‰
 	               Mapper                                     method
 
-5¡¢Á½ÖÖ¿ª·¢Ä£Ê½
-	1£©Ô­Ê¼Ä£Ê½
-	    ÔÚdaoÊµÏÖÀàÖĞÊµÏÖdao½Ó¿ÚÖĞµÄ·½·¨£¬´æÔÚ´óÁ¿Ä£°å´úÂë£º
-		Í¨¹ıSqlSessionFactory´´½¨SqlSession£»µ÷ÓÃSqlSessionµÄ·½·¨²Ù×÷Êı¾İ¿â£»¹Ø±ÕSqlsession¡£
+5ã€ä¸¤ç§å¼€å‘æ¨¡å¼
+	1ï¼‰åŸå§‹æ¨¡å¼
+	    åœ¨daoå®ç°ç±»ä¸­å®ç°daoæ¥å£ä¸­çš„æ–¹æ³•ï¼Œå­˜åœ¨å¤§é‡æ¨¡æ¿ä»£ç ï¼š
+		é€šè¿‡SqlSessionFactoryåˆ›å»ºSqlSessionï¼›è°ƒç”¨SqlSessionçš„æ–¹æ³•æ“ä½œæ•°æ®åº“ï¼›å…³é—­Sqlsessionã€‚
 		/**
 		String resource = "SqlMapConfig.xml";
         		InputStream inputStream = Resources.getResourceAsStream(resource);
         		SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
 	    	SqlSession session = factory.openSession();
-		User user = session.selectOne("user.findUserById",id); //²ÎÊıÒ»£ºnamespace.id           
+		User user = session.selectOne("user.findUserById",id); //å‚æ•°ä¸€ï¼šnamespace.id           
         		session.close();
 		*/
-	2£©Mapper´úÀí¿ª·¢Ä£Ê½
-	    mapper½Ó¿Ú£¨Ïàµ±ÓÚdao½Ó¿Ú£©¼´¿É£¬¶ø²»ÓÃÔÙĞ´daoÊµÏÖÀà¡£
-	    Mybatis»á×Ô¶¯µÄÎªmapper½Ó¿ÚÉú³É¶¯Ì¬´úÀíÊµÏÖÀà¡£²»¹ıÒªÊµÏÖmapper´úÀíµÄ¿ª·¢·½Ê½£¬ĞèÒª×ñÑ­Ò»Ğ©¿ª·¢¹æ·¶¡£
-		>mapper½Ó¿ÚµÄÈ«ÏŞ¶¨ÃûÒªºÍmapperÓ³ÉäÎÄ¼şµÄnamespaceµÄÖµÏàÍ¬¡£
-		>mapper½Ó¿ÚµÄ·½·¨Ãû³ÆÒªºÍmapperÓ³ÉäÎÄ¼şÖĞµÄstatementµÄidÏàÍ¬¡£
-		>mapper½Ó¿ÚµÄ·½·¨²ÎÊıÖ»ÄÜÓĞÒ»¸ö£¬ÇÒÀàĞÍÒªºÍmapperÓ³ÉäÎÄ¼şÖĞstatementµÄparameterTypeµÄÖµ±£³ÖÒ»ÖÂ¡£
-		>mapper½Ó¿ÚµÄ·µ»ØÖµÀàĞÍÒªºÍmapperÓ³ÉäÎÄ¼şÖĞstatementµÄresultTypeÖµ»òresultMapÖĞµÄtypeÖµ±£³ÖÒ»ÖÂ¡£
-		>ÉÏÃæ4¾ä»°µÄÒâË¼ÊÇ£º½Ó¿ÚµÄ°üÃû£¬ÀàÃû£¬²ÎÊı£¬·µ»ØÖµ·Ö±ğ¶ÔÓ¦×ÅÓ³ÉäÎÄ¼şµÄnamespace£¬id£¬parameterType£¬resultType¡£
+	2ï¼‰Mapperä»£ç†å¼€å‘æ¨¡å¼
+	    mapperæ¥å£ï¼ˆç›¸å½“äºdaoæ¥å£ï¼‰å³å¯ï¼Œè€Œä¸ç”¨å†å†™daoå®ç°ç±»ã€‚
+	    Mybatisä¼šè‡ªåŠ¨çš„ä¸ºmapperæ¥å£ç”ŸæˆåŠ¨æ€ä»£ç†å®ç°ç±»ã€‚ä¸è¿‡è¦å®ç°mapperä»£ç†çš„å¼€å‘æ–¹å¼ï¼Œéœ€è¦éµå¾ªä¸€äº›å¼€å‘è§„èŒƒã€‚
+		>mapperæ¥å£çš„å…¨é™å®šåè¦å’Œmapperæ˜ å°„æ–‡ä»¶çš„namespaceçš„å€¼ç›¸åŒã€‚
+		>mapperæ¥å£çš„æ–¹æ³•åç§°è¦å’Œmapperæ˜ å°„æ–‡ä»¶ä¸­çš„statementçš„idç›¸åŒã€‚
+		>mapperæ¥å£çš„æ–¹æ³•å‚æ•°åªèƒ½æœ‰ä¸€ä¸ªï¼Œä¸”ç±»å‹è¦å’Œmapperæ˜ å°„æ–‡ä»¶ä¸­statementçš„parameterTypeçš„å€¼ä¿æŒä¸€è‡´ã€‚
+		>mapperæ¥å£çš„è¿”å›å€¼ç±»å‹è¦å’Œmapperæ˜ å°„æ–‡ä»¶ä¸­statementçš„resultTypeå€¼æˆ–resultMapä¸­çš„typeå€¼ä¿æŒä¸€è‡´ã€‚
+		>ä¸Šé¢4å¥è¯çš„æ„æ€æ˜¯ï¼šæ¥å£çš„åŒ…åï¼Œç±»åï¼Œå‚æ•°ï¼Œè¿”å›å€¼åˆ†åˆ«å¯¹åº”ç€æ˜ å°„æ–‡ä»¶çš„namespaceï¼Œidï¼ŒparameterTypeï¼ŒresultTypeã€‚
 		/**
 		String resource = "SqlMapConfig.xml";
 		InputStream inputStream = Resources.getResourceAsStream(resource);
@@ -58,10 +58,10 @@
         		session.close();
 		*/
 
-6¡¢mavenÄæÏò¹¤³ÌÉú³ÉÊµÌåÀà¡¢mapperÓ³ÉäÎÄ¼ş
-	1£©ÔÚpom.xmlµÄproject>buildÀïÃæÌí¼Ó²å¼ş£¬ÈÃmaven»·¾³Ö§³Ömybatis-generator×é¼ş
-	2£©ÄæÏò¹¤³ÌÅäÖÃÎÄ¼ş£¬
-	3£©ÏîÄ¿ÓÒ¼ü->run as->maven build...,Goals:ÖĞÊäÈëmybatis-generator:generate
+6ã€mavené€†å‘å·¥ç¨‹ç”Ÿæˆå®ä½“ç±»ã€mapperæ˜ å°„æ–‡ä»¶
+	1ï¼‰åœ¨pom.xmlçš„project>buildé‡Œé¢æ·»åŠ æ’ä»¶ï¼Œè®©mavenç¯å¢ƒæ”¯æŒmybatis-generatorç»„ä»¶
+	2ï¼‰é€†å‘å·¥ç¨‹é…ç½®æ–‡ä»¶ï¼Œ
+	3ï¼‰é¡¹ç›®å³é”®->run as->maven build...,Goals:ä¸­è¾“å…¥mybatis-generator:generate
 
 
 
