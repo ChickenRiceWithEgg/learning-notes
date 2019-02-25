@@ -1,0 +1,76 @@
+1、jar包
+	1）mybatis-3.1.1.jar
+	2）mysql-connector-java-5.1.7-bin.jar
+
+2、配置文件
+	1）mybatis-conf.xml：主要内容是配置数据库连接信息
+	2）userMapper.xml：数据库表的sql映射文件，主要内容是sql语句  【可以逆向生成，不用自己编写】
+	**mybatis-conf.xml中需要注册userMapper.xml
+	3）generator.xml：用于maven逆向生成
+
+3、目录结构
+	|-mybatis-conf.xml <配置文件>  【配置数据库连接、注册sql映射文件】
+	|-model
+	    |-User.java <实体类>
+	    |-dao
+	        |-UserMapper.java <dao接口>      【定义增删改查的接口方法】      
+	        |-userMapper.xml  <sql映射文件>  【定义增删改查的sql方法】     sql语句的id要与dao接口的方法名对应
+
+4、作用域（scope）和生命周期
+		类名称			SCOPE
+	SqlSessionFactoryBuilder     	                method
+	     SqlSessionFactory                              application
+	            SqlSession                      request/method （可以认为是线程级）
+	               Mapper                                     method
+
+5、两种开发模式
+	1）原始模式
+	    在dao实现类中实现dao接口中的方法，存在大量模板代码：
+		通过SqlSessionFactory创建SqlSession；调用SqlSession的方法操作数据库；关闭Sqlsession。
+		/**
+		String resource = "SqlMapConfig.xml";
+        		InputStream inputStream = Resources.getResourceAsStream(resource);
+        		SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
+	    	SqlSession session = factory.openSession();
+		User user = session.selectOne("user.findUserById",id); //参数一：namespace.id           
+        		session.close();
+		*/
+	2）Mapper代理开发模式
+	    mapper接口（相当于dao接口）即可，而不用再写dao实现类。
+	    Mybatis会自动的为mapper接口生成动态代理实现类。不过要实现mapper代理的开发方式，需要遵循一些开发规范。
+		>mapper接口的全限定名要和mapper映射文件的namespace的值相同。
+		>mapper接口的方法名称要和mapper映射文件中的statement的id相同。
+		>mapper接口的方法参数只能有一个，且类型要和mapper映射文件中statement的parameterType的值保持一致。
+		>mapper接口的返回值类型要和mapper映射文件中statement的resultType值或resultMap中的type值保持一致。
+		>上面4句话的意思是：接口的包名，类名，参数，返回值分别对应着映射文件的namespace，id，parameterType，resultType。
+		/**
+		String resource = "SqlMapConfig.xml";
+		InputStream inputStream = Resources.getResourceAsStream(resource);
+	        	SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
+        		SqlSession session = factory.openSession();
+        		User user = new User();
+        		user.setUsername("lalala");
+        		user.setPassword("asdf");
+        		user.setAge(12);
+        		UserMapper mapper = session.getMapper(UserMapper.class);
+        		mapper.insertUser(user);
+        		session.commit();
+        		session.close();
+		*/
+
+6、maven逆向工程生成实体类、mapper映射文件
+	1）在pom.xml的project>build里面添加插件，让maven环境支持mybatis-generator组件
+	2）逆向工程配置文件，
+	3）项目右键->run as->maven build...,Goals:中输入mybatis-generator:generate
+
+
+
+
+
+
+
+
+
+
+
+

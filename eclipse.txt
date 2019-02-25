@@ -1,0 +1,4 @@
+1、git clone新项目需要做的配置
+	1、build path—>source—>将src/main/java下的各个子项目添加到source中
+	2、将maven状态设为dev
+	3、将web project setting—>context root改为/
